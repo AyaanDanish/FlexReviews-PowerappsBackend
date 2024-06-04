@@ -54,13 +54,13 @@ def sentiment():
     return jsonify({"sentiment": sentiment_result})
 
 
-def check_profanity(text):
-    profanity_result = predict([text])[0]
-    return "Inappropriate" if profanity_result == 1 else "Appropriate"
+# def check_profanity(text):
+#     profanity_result = predict([text])[0]
+#     return "Inappropriate" if profanity_result == 1 else "Appropriate"
 
 
-@app.route("/profanity", methods=["POST"])
-def profanity():
-    text = request.json.get("text")
-    profanity_result = check_profanity(text)
-    return jsonify({"profanity": profanity_result})
+# @app.route("/profanity", methods=["POST"])
+# def profanity():
+#     text = request.json.get("text")
+#     profanity_result = check_profanity(text)
+#     return jsonify({"profanity": profanity_result})
