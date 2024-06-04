@@ -4,7 +4,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-from profanity_check import predict, predict_prob
+
 
 nltk.data.path.append("/var/task/api/nltk_data/")
 
