@@ -1,11 +1,13 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return 'Hello, World!'
 
-@app.route('/about')
-def about():
-    return 'About'
+@app.route("/test", methods=["GET"])
+def test_endpoint():
+    return "Hello, this is a test endpoint!", 200
+
+
+@app.route("/", methods=["GET"])
+def homepage():
+    return render_template("index.html")
