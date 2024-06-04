@@ -47,5 +47,5 @@ def get_sentiment(text):
 
 @app.route("/sentiment", methods=["POST"])
 def sentiment():
-    text = request.form.get("text")
+    text = request.args.get("text")
     return get_sentiment(text)
