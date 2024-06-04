@@ -4,6 +4,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+from profanity_check import predict, predict_prob
 
 nltk.data.path.append("/var/task/api/nltk_data/")
 
@@ -51,3 +52,15 @@ def sentiment():
     text = request.json.get("text")
     sentiment_result = get_sentiment(text)
     return jsonify({"sentiment": sentiment_result})
+
+
+def check_profanity(text):
+    profanity_result = predict([text])[0]
+    return "Inappropriate" if profanity_result == 1 else "Appropriate"
+
+
+@app.route("/profanity", methods=["POST"])
+def profanity():
+    text = request.json.get("text")
+    profanity_result = check_profanity(text)
+    return jsonify({"profanity": profanity_result})
