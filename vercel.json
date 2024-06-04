@@ -1,4 +1,3 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }],
-  "buildCommand": "bash build.sh"
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index" }]
 }
