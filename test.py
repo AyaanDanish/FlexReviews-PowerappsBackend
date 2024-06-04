@@ -1,6 +1,5 @@
 import nltk
 
-
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 from nltk.corpus import stopwords
@@ -45,9 +44,10 @@ def get_sentiment(text):
 
     scores = analyzer.polarity_scores(text)
 
-    sentiment = 1 if scores["pos"] > 0 else 0
+    max_sentiment = max(scores, key=scores.get)
 
-    return sentiment
+    sentiment_names = {"neu": "Neutral", "pos": "Positive", "neg": "Negative"}
+    return sentiment_names[max_sentiment]
 
 
-print(get_sentiment("I hate you"))
+print(get_sentiment("hello"))

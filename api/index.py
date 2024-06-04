@@ -41,8 +41,9 @@ analyzer = SentimentIntensityAnalyzer()
 # create get_sentiment function
 def get_sentiment(text):
     scores = analyzer.polarity_scores(text)
-    sentiment = "Positive" if scores["pos"] > 0 else "Negative"
-    return sentiment
+    max_sentiment = max(scores, key=scores.get)
+    sentiment_names = {"neu": "Neutral", "pos": "Positive", "neg": "Negative"}
+    return sentiment_names[max_sentiment]
 
 
 @app.route("/sentiment", methods=["POST"])
