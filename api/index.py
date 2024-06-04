@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
@@ -47,5 +47,6 @@ def get_sentiment(text):
 
 @app.route("/sentiment", methods=["POST"])
 def sentiment():
-    text = request.form.get("text")
-    return get_sentiment(text)
+    text = request.json.get("text")
+    sentiment_result = get_sentiment(text)
+    return jsonify({"sentiment": sentiment_result})
